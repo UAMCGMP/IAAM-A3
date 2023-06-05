@@ -19,7 +19,7 @@ O objetivo deste projeto é aplicar e aprimorar os conhecimentos adquiridos dura
 # Algoritimo Machine Learning
 - Descrição do algoritmo.
 
-## Fluxo do Apliativo
+## Fluxo do Aplicativo
 
 
 # Implementação
