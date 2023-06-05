@@ -8,7 +8,7 @@
 - [Executando](#executando)
 
 # Projeto
-Este projeto foi desenvolvido como parte dos estudos da disciplina Inteligência Artificial e Aprendizado de Maquina do curso de Engenharia da Computação na Universidade Anhembi Morumbi, lecionada pelo professor Paulo. O projeto foi realizado por um grupo de seis estudantes entusiastas de programação, incluindo:
+Este projeto foi desenvolvido como parte dos estudos da disciplina Inteligência Artificial e Aprendizado de Maquina do curso de Engenharia da Computação na Universidade Anhembi Morumbi, lecionada pelo professor Paulo. O projeto foi realizado por um grupo de quatro estudantes entusiastas de programação, incluindo:
 - [Camila](https://github.com/ccaetano478)
 - [Gabriel](https://github.com/gabrielsteffen)
 - [Mateus](https://github.com/MtTimm)
@@ -23,7 +23,12 @@ O objetivo deste projeto é aplicar e aprimorar os conhecimentos adquiridos dura
 
 
 # Implementação
-- [] Tarefa 1
+- [ ] Carregamento e leitura de arquivos *.csv*, *.xlsx*;
+- Geração de visualização por:
+    [ ] - Agrupamento: gerar a visualização Scatter;
+    [ ] - Classificação: gerar a matriz de confusão;
+    [ ] - Regressão: gerar a visualização da linha de saída.
+
 # Componentes Principais
 O projeto é composto por vários arquivos e classes que desempenham funções específicas. A seguir estão os principais componentes do programa:
 
