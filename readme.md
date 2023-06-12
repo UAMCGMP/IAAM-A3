@@ -26,7 +26,7 @@ O algoritmo Random Forest é um método de aprendizado de máquina que usa vári
 - [x] Carregamento e leitura de arquivos *.csv*, *.xlsx*;
 - [x] Normalização dos dados;
 - [X] Entrada de treinamento
-- [X] Coleta da amostras
+- [X] Coleta das amostras
 
 # Componentes Principais
 O projeto é composto por vários arquivos e classes que desempenham funções específicas. A seguir estão os principais componentes do programa:
