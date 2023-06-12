@@ -4,9 +4,14 @@ class DecisionTree {
     private Node root;
 
     public void train(List<Map<String, Object>> data, int maxDepth, int numFeatures) {
+        //pegar os atributos da tebela e remover o ultimo que deve ser a classificação dele
         List<String> features = new ArrayList<>(data.get(0).keySet());
         features.remove("label");
+
+        //selecionar aleatóriamente alguns atributos para compor a arvore
         List<Integer> selectedFeatures = selectFeatures(features, numFeatures);
+
+        //constroi a arvore
         this.root = buildTree(data, selectedFeatures, maxDepth);
     }
 
@@ -58,7 +63,9 @@ class DecisionTree {
 
         for (int i = 0; i < numFeatures; i++) {
             int index = random.nextInt(features.size());
-            selectedFeatures.add(index);
+            if(!selectedFeatures.contains(index)){
+                selectedFeatures.add(index);
+            }
         }
 
         return selectedFeatures;
@@ -81,11 +88,12 @@ class DecisionTree {
     private SplitCriteria findBestSplit(List<Map<String, Object>> data, List<Integer> selectedFeatures) {
         SplitCriteria bestSplit = null;
         double bestScore = -1.0;
+        double splitValue = 0.33;
 
         for (int featureIndex : selectedFeatures) {
             String featureName = getFeatureName(featureIndex);
             List<String> featureValues = extractFeatureValues(data, featureName);
-            double score = calculateGiniIndex(data, featureName, featureValues);
+            double score = calculateGiniIndex(data, featureName, splitValue);
 
             if (bestSplit == null || score < bestScore) {
                 bestSplit = new SplitCriteria(featureIndex, featureName, featureValues.get(0));
@@ -97,7 +105,7 @@ class DecisionTree {
     }
 
     private String getFeatureName(int featureIndex) {
-        // Assuming feature names are stored in a list
+        // Levando em consideração que os nomes estão em uma lista
         List<String> featureNames = new ArrayList<>(Arrays.asList("feature1", "feature2", "feature3"));
         return featureNames.get(featureIndex);
     }
@@ -145,7 +153,8 @@ class DecisionTree {
 
 
 
-    private double calculateGiniIndex(List<Map<String, Object>> data, String featureName, Object splitValue) {
+    private double calculateGiniIndex(List<Map<String, Object>> data, String featureName, Double splitValue) {
+
         int totalCount = data.size();
         double giniIndex = 0.0;
 
@@ -156,6 +165,7 @@ class DecisionTree {
             classCounts.put(label, classCounts.getOrDefault(label, 0) + 1);
         }
 
+
         // Cálculo do índice de Gini
         for (Object classLabel : classCounts.keySet()) {
             double classProbability = (double) classCounts.get(classLabel) / totalCount;
@@ -165,9 +175,10 @@ class DecisionTree {
         // Aplicação da divisão com base na característica e valor fornecidos
         List<Map<String, Object>> leftSubset = new ArrayList<>();
         List<Map<String, Object>> rightSubset = new ArrayList<>();
+
         for (Map<String, Object> instance : data) {
-            Object value = instance.get(featureName);
-            if (value instanceof Comparable && ((Comparable<?>) value).compareTo(splitValue) < 0) {
+            Double value = (Double) instance.get(featureName);
+            if (value <= splitValue) {
                 leftSubset.add(instance);
             } else {
                 rightSubset.add(instance);
@@ -175,11 +186,21 @@ class DecisionTree {
         }
 
         // Cálculo do ganho de Gini
-        double leftGini = calculateGiniIndex(leftSubset);
-        double rightGini = calculateGiniIndex(rightSubset);
+        double leftGini = calculateGiniGain(leftSubset,classCounts);
+        double rightGini = calculateGiniGain(rightSubset,classCounts);
         double giniGain = (leftSubset.size() * leftGini + rightSubset.size() * rightGini) / totalCount;
 
         return giniGain;
+    }
+
+    private double calculateGiniGain(List<Map<String, Object>> subset, Map<Object, Integer> classCounts ){
+        for (int i = 0; i < subset.size(); i++) {
+            int size = subset.size();
+
+
+
+        }
+        return 0;
     }
 
     private int compareValues(Object value1, Object value2) {

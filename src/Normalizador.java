@@ -1,25 +1,27 @@
 import java.util.List;
+import java.util.Map;
 
 public class Normalizador {
-    public static List<Dado>  normalizar(List<Dado> dados){
-        int tamanho = dados.size();
-        for (int i = 0; i < tamanho; i++) {
+    public static List<Map<String, Object>> normalizar(List<Map<String, Object>> dados){
+        for (int i = 0; i < dados.size(); i++) {
             double max = Double.MIN_VALUE;
             double min = Double.MAX_VALUE;
-            for (Dado dado : dados) {
-                double[] referencia = dado.getReferencias();
-                if(referencia[i]>max){
-                    max=referencia[i];
+            for (Map<String, Object> dado : dados) {
+
+                if(dado.get(i) > max){
+                    max = dado.get(i);
                 }
-                if(referencia[i]<min){
-                    min=referencia[i];
+                if((double) dado.get(i) < min){
+                    min =  dado.get(i);
                 }
             }
             double diferenca = max-min;
-            for (Dado dado : dados) {
-                double[] referencia = dado.getReferencias();
-                referencia[i]=(referencia[i]-min)/diferenca;
-            }           
+
+
+            for (int j = 0; j < dados.size(); j++) {
+                dados.get(j) = dados
+            }
+
         }
         return dados;
     }

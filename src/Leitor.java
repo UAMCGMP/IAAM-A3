@@ -1,35 +1,39 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Leitor {
-    public Dado[] importar(String nomeArquivo) throws IOException{
+    public List<Map<String, Object>>  importar(String nomeArquivo) throws IOException {
+        List<String> linhas = new ArrayList<>();
+        List<Map<String, Object>> dados = new ArrayList<>();
         try {
-            BufferedReader contador = new BufferedReader(new FileReader(nomeArquivo));
-            int linhas = 0;
-            while (contador.ready()){
-                contador.readLine();
-                linhas++;
-            }
-            contador.close();
-            Dado[] dados = new Dado[linhas];
-            int indice = 0;
             BufferedReader leitor = new BufferedReader(new FileReader(nomeArquivo));
-            while(leitor.ready()){
+            while (leitor.ready()) {
                 String linha = leitor.readLine();
-                String ref[] = linha.split(";");
-                int tamanho = ref.length;
-                double[] referencias = new double[tamanho];
-                for (int i = 0; i < tamanho; i++) {
-                    referencias[i] = Double.parseDouble(ref[i]);
-                }
-                dados[indice++] = new Dado(referencias);
+                linhas.add(linha);
             }
+
+            String[] labels = linhas.get(0).split(";");
+            for (int i = 1; i < linhas.size(); i++) {
+                String[] refsDados = linhas.get(i).split(";");
+                Map<String, Object> dado = new HashMap<>();
+                for (int j = 0; j < labels.length; j++) {
+                    dado.put(labels[j], refsDados[j]);
+                }
+                dados.add(dado);
+            }
+
             leitor.close();
-            return dados;           
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
             return null;
         }
+
+        return dados;
     }
 }

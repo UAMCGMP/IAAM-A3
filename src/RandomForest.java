@@ -40,7 +40,7 @@ public class RandomForest {
         List<Map<String, Object>> bootstrapSample = new ArrayList<>();
         Random random = new Random();
 
-        for (int i = 0; i < data.size(); i++) {
+        for (int i = 0; i < data.size()-1; i++) {
             int index = random.nextInt(data.size());
             bootstrapSample.add(data.get(index));
         }
