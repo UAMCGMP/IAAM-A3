@@ -15,6 +15,8 @@ public class App{
             RandomForest randomForest = new RandomForest();
             randomForest.train(trainingDataNormalizado, 4, 4, 3);
 
+            //dado de teste
+            //randomForest.predict(dadoTeste);
 
         } catch (Exception e) {
             throw new RuntimeException(e);

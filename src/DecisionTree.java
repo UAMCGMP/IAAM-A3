@@ -6,7 +6,7 @@ class DecisionTree {
     public void train(List<Map<String, Object>> data, int maxDepth, int numFeatures) {
         //pegar os atributos da tebela e remover o ultimo que deve ser a classificação dele
         List<String> features = new ArrayList<>(data.get(0).keySet());
-        features.remove("label");
+        features.remove("test");
 
         //selecionar aleatóriamente alguns atributos para compor a arvore
         List<Integer> selectedFeatures = selectFeatures(features, numFeatures);
@@ -26,9 +26,9 @@ class DecisionTree {
 
         // Check if all instances belong to the same class
         boolean sameClass = true;
-        Object firstLabel = data.get(0).get("label");
+        Object firstLabel = data.get(0).get("test");
         for (Map<String, Object> instance : data) {
-            if (!instance.get("label").equals(firstLabel)) {
+            if (!instance.get("test").equals(firstLabel)) {
                 sameClass = false;
                 break;
             }
@@ -91,7 +91,7 @@ class DecisionTree {
         double splitValue = 0.33;
 
         for (int featureIndex : selectedFeatures) {
-            String featureName = getFeatureName(featureIndex);
+            String featureName = getFeatureName(featureIndex, data);
             List<String> featureValues = extractFeatureValues(data, featureName);
             double score = calculateGiniIndex(data, featureName, splitValue);
 
@@ -104,10 +104,15 @@ class DecisionTree {
         return bestSplit;
     }
 
-    private String getFeatureName(int featureIndex) {
+    private String getFeatureName(int featureIndex, List<Map<String, Object>> data) {
         // Levando em consideração que os nomes estão em uma lista
-        List<String> featureNames = new ArrayList<>(Arrays.asList("feature1", "feature2", "feature3"));
-        return featureNames.get(featureIndex);
+        Object[] labels = data.get(0).keySet().toArray();
+        List<String>labelsList = new ArrayList<>();
+        for (int i = 0; i < labels.length; i++) {
+            labelsList.add(labels[i].toString());
+        }
+
+        return labelsList.get(featureIndex);
     }
 
     private List<String> extractFeatureValues(List<Map<String, Object>> data, String featureName) {
@@ -161,7 +166,7 @@ class DecisionTree {
         // Contagem das classes/rótulos
         Map<Object, Integer> classCounts = new HashMap<>();
         for (Map<String, Object> instance : data) {
-            Object label = instance.get("label");
+            Object label = instance.get("test");
             classCounts.put(label, classCounts.getOrDefault(label, 0) + 1);
         }
 
