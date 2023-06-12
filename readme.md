@@ -42,7 +42,7 @@ O projeto é composto por vários arquivos e classes que desempenham funções e
 
 
 # Requerimentos
-Os dados precisam ser ser numéricos e as labels podem ser strings
+Os dados precisam ser numéricos e as labels podem ser strings.
 # Executando
 1. Passo 1.
 2. Passo 2.
