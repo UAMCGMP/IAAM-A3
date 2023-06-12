@@ -10,11 +10,11 @@ public class App{
 
             Leitor leitor = new Leitor();
             List<Map<String, Object>> trainingData = leitor.importar("descobrir se uma pessoa vai ter diabetes.csv");
-
+            List<Map<String, Object>> trainingDataNormalizado = Normalizador.normalizar(trainingData);
 
 
             RandomForest randomForest = new RandomForest();
-            randomForest.train(trainingData, 4, 4, 3);
+            randomForest.train(trainingDataNormalizado, 4, 4, 3);
 
 
         } catch (Exception e) {
