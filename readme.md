@@ -14,7 +14,7 @@ Este projeto foi desenvolvido como parte dos estudos da disciplina Inteligência
 - [Mateus](https://github.com/MtTimm)
 - [Paulo](https://github.com/paulodaniellac)
 
-O objetivo deste projeto é aplicar e aprimorar os conhecimentos adquiridos durante a disciplina de Inteligência Artificial e Aprendizado de Maquina, bem como a prática colaborativa em um ambiente de desenvolvimento de software.
+O objetivo deste projeto é aplicar e aprimorar os conhecimentos adquiridos durante a disciplina de Inteligência Artificial e Aprendizado de Máquina, bem como a prática colaborativa em um ambiente de desenvolvimento de software.
 
 # Algoritimo Random Forest
 O algoritmo Random Forest é um método de aprendizado de máquina que usa várias árvores de decisão para previsão ou classificação. Ele funciona a partir de um conjunto de árvores de decisão independentes para operar. Os dados de treinamento são amostrados aleatoriamente para treinar cada árvore de substituição. Durante a previsão, as árvores votam de forma individual para tomar decisões. O que definirá a previsão final é a classe com mais votos. Ao combinar várias árvores teremos uma maior precisão da previsão e uma diminuição do overfitting. Este algoritmo também pode determinar a importância das variáveis de entrada. Isso indicará os recursos mais pertinentes à previsão.
