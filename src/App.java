@@ -15,13 +15,19 @@ public class App{
             RandomForest randomForest = new RandomForest();
             randomForest.train(trainingDataNormalizado, 4, 4, 3);
 
-            //dado de teste
-            //randomForest.predict(dadoTeste);
+
+            Map<String, Object> dadoTeste = new HashMap<>();
+            dadoTeste.put("feature1", 7);
+            dadoTeste.put("feature2", 8);
+            dadoTeste.put("feature3", 9);
+            dadoTeste.put("feature4", 10);
+            dadoTeste.put("test", "negative");
+
+            randomForest.predict(dadoTeste);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
     }
-
 }

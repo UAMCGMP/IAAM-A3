@@ -39,7 +39,7 @@ class DecisionTree {
 
         SplitCriteria bestSplit = findBestSplit(data, selectedFeatures);
         List<Integer> remainingFeatures = new ArrayList<>(selectedFeatures);
-        remainingFeatures.remove(bestSplit.featureIndex);
+        remainingFeatures.remove(bestSplit.featureName);
 
         List<Map<String, Object>> leftSubset = new ArrayList<>();
         List<Map<String, Object>> rightSubset = new ArrayList<>();
@@ -182,7 +182,7 @@ class DecisionTree {
         List<Map<String, Object>> rightSubset = new ArrayList<>();
 
         for (Map<String, Object> instance : data) {
-            Double value = (Double) instance.get(featureName);
+            double value = Double.parseDouble(instance.get(featureName).toString());
             if (value <= splitValue) {
                 leftSubset.add(instance);
             } else {
@@ -265,9 +265,10 @@ class DecisionTree {
     }
 
     private boolean isInstanceLeft(Map<String, Object> instance, SplitCriteria splitCriteria) {
-        Object value = instance.get(splitCriteria.featureName);
-
-        return true;
-
+        double value = Double.parseDouble(instance.get(splitCriteria.featureName).toString());
+        if(value < Double.parseDouble(splitCriteria.splitValue)){
+            return true;
+        }
+        return false;
     }
 }
