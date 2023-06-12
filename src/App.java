@@ -12,7 +12,6 @@ public class App{
             List<Map<String, Object>> trainingData = leitor.importar("descobrir se uma pessoa vai ter diabetes.csv");
             List<Map<String, Object>> trainingDataNormalizado = Normalizador.normalizar(trainingData);
 
-
             RandomForest randomForest = new RandomForest();
             randomForest.train(trainingDataNormalizado, 4, 4, 3);
 
