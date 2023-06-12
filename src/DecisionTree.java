@@ -6,7 +6,7 @@ class DecisionTree {
     public void train(List<Map<String, Object>> data, int maxDepth, int numFeatures) {
         //pegar os atributos da tebela e remover o ultimo que deve ser a classificação dele
         List<String> features = new ArrayList<>(data.get(0).keySet());
-        features.remove("label");
+        features.remove("test");
 
         //selecionar aleatóriamente alguns atributos para compor a arvore
         List<Integer> selectedFeatures = selectFeatures(features, numFeatures);
