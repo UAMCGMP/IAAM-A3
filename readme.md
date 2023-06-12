@@ -33,7 +33,6 @@ O projeto é composto por vários arquivos e classes que desempenham funções e
 
 ## Back-end
 - `App.java`: Ponto de entrada para executar o Random Forest. Carrega dados, treina o modelo, faz previsões e exibe resultados.
-- `Dado.java`:
 - `DecisionTree.java`: Representa uma árvore de decisão no Random Forest. Constrói a árvore, faz previsões e calcula importância das características.
 - `Leitor.java`: Realiza o carregamento e leitura do arquivo *.csv* ou *.txt*
 - `Node.java`: Representa um nó em uma árvore de decisão. Armazena dados de divisão e permite fazer previsões.
