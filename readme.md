@@ -23,25 +23,23 @@ O algoritmo Random Forest é um método de aprendizado de máquina que usa vári
 
 
 # Implementação
-- [ ] Carregamento e leitura de arquivos *.csv*, *.xlsx*;
-- [ ] Normalização dos dados;
-- Geração de visualização por:
-  - [ ] Agrupamento: gerar a visualização Scatter;
-  - [ ] Classificação: gerar a matriz de confusão;
-  - [ ] Regressão: gerar a visualização da linha de saída.
+- [x] Carregamento e leitura de arquivos *.csv*, *.xlsx*;
+- [x] Normalização dos dados;
+- [X] Entrada de treinamento
+- [X] Coleta da amostras
 
 # Componentes Principais
 O projeto é composto por vários arquivos e classes que desempenham funções específicas. A seguir estão os principais componentes do programa:
 
 ## Back-end
-- `App.java`: 
+- `App.java`: Ponto de entrada para executar o Random Forest. Carrega dados, treina o modelo, faz previsões e exibe resultados.
 - `Dado.java`:
-- `DecisionTree.java`:
-- `Leitor.java`:
-- `Node.java`: 
-- `Normalizador.java`:
-- `RandomForest.java`:
-- `SplitCriteria.java`:
+- `DecisionTree.java`: Representa uma árvore de decisão no Random Forest. Constrói a árvore, faz previsões e calcula importância das características.
+- `Leitor.java`: Realiza o carregamento e leitura do arquivo *.csv* ou *txt
+- `Node.java`: Representa um nó em uma árvore de decisão. Armazena dados de divisão e permite fazer previsões.
+- `Normalizador.java`: Realiza a normalização dos dados.
+- `RandomForest.java`: Treina e faz previsões usando o algoritmo Random Forest. Calcula importância das características e combina várias árvores de decisão. 
+- `SplitCriteria.java`: Armazena critérios de divisão em um nó da árvore. Contém nome e valor da característica para determinar o caminho.
 
 
 # Requerimentos
